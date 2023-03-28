@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/tooplate-main.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
     {% block css %}
     {% endblock %}
 <!--
@@ -35,15 +36,28 @@ https://www.tooplate.com/view/2114-pixie
     <div id="pre-header">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <span>
-              {% if user.is_authenticated %}
-                {{ user.username }}
-                | <a href="{% url 'auth:logout' %}" class="text-light">Выйти</a>
-              {% else %}
-                <a href="{% url 'auth:login' %}" class="text-light">Войти</a>
+          <div class="col-md-12 d-flex justify-content-end align-items-center text-light">
+
+            {% if user.is_authenticated %}
+              {% if user.is_superuser %}
+                <a href="/admin/" class="nav-link">
+                  <span>Админка</span>
+                </a>
+              |
               {% endif %}
-            </span>
+                <a href="{% url 'auth:edit' %}" class="nav-link">
+                  <span>{{ user.first_name|default:'Пользователь' }}</span>
+                </a>
+              |
+                <a href="{% url 'auth:logout' %}" class="nav-link">
+                  <span>Выйти</span>
+                </a>
+              {% else %}
+                <a href="{% url 'auth:login' %}" class="nav-link">
+                  <span>Войти</span>
+                </a>
+              {% endif %}
+
           </div>
         </div>
       </div>
