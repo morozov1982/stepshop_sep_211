@@ -8,6 +8,7 @@ links_menu = [
     {'href': 'contacts', 'name': 'Контакты', 'route': 'contacts/'},
 ]
 
+
 def index(request):
     title = "главная"
 
