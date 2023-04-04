@@ -13,7 +13,10 @@
                     <button class="btn btn-primary" data-filter="*">Все</button>
 
                     {% for category in categories %}
-                        <button class="btn btn-primary" data-filter="{{ category.name }}">{{ category.name|capfirst }}</button>
+                        <button class="btn btn-primary"
+                                data-filter="{{ category.name }}">
+                            {{ category.name|capfirst }}
+                        </button>
                     {% endfor %}
                 </div>
             </div>
