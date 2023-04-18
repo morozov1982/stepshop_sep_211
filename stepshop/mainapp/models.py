@@ -13,6 +13,8 @@ class ProductCategory(models.Model):
         blank=True,
     )
 
+    is_active = models.BooleanField(default=True)
+
     def __str__(self):
         return self.name or f'Категория с id - {self.pk}'
 
@@ -63,6 +65,8 @@ class Product(models.Model):
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.name or f'Продукт с id - {self.pk}'
